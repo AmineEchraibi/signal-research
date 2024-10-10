@@ -1,0 +1,28 @@
+# Go to https://pre-commit.com for more information
+# Go to https://pre-commit.com/hooks.html for more hooks
+
+default_language_version:
+    python: python3.10
+repos:
+  # commons
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+  # project
+  - repo: local
+    hooks:
+    - id: formatters
+      name: formatters
+      language: system
+      pass_filenames: false
+      verbose: true
+      entry: make formatters

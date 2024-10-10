@@ -1,0 +1,94 @@
+[tool.poetry]
+name = "signal-research"
+version = "0.1.0"
+description = ""
+authors = ["AmineEchraibi <echraibi.amine@gmail.com>"]
+readme = "README.md"
+packages = [
+   { include = "signal_research", from = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+jupyter = "^1.1.1"
+pandas = "^2.2.3"
+trading-middlewares = {version = "^0.1.0", source = "pypi-server"}
+python-dotenv = "^1.0.1"
+
+
+[tool.poetry.group.checkers.dependencies]
+coverage = "^7.6.1"
+moto = "^5.0.12"
+mypy = "^1.11.1"
+pylint = "^3.2.6"
+pytest = "^8.3.2"
+pytest-cov = "^5.0.0"
+pytest-mock = "^3.14.0"
+pytest-xdist = "^3.6.1"
+types-python-dateutil = "^2.9.0.20240316"
+
+
+[tool.poetry.group.documenters.dependencies]
+myst = "^1.0.4"
+sphinx = "^8.0.2"
+sphinxemoji = "^0.3.1"
+
+
+[tool.poetry.group.formatters.dependencies]
+isort = "^5.13.2"
+black = "^24.8.0"
+
+
+
+# CONFIGURATIONS
+
+[tool.black]
+# source line length
+line-length = 120
+
+[tool.coverage.run]
+# report every branch
+branch = true
+# source code to cover
+source = [ "src" ]
+
+[tool.isort]
+# same length as black
+line_length = 120
+# associate isort with black
+profile = "black"
+
+[tool.mypy]
+# check untyped definitions
+check_untyped_defs = true
+# don't fail on missing imports
+ignore_missing_imports = true
+# add additional plugins to mypy
+plugins = [ "pandera.mypy", "pydantic.mypy" ]
+
+[tool.pylint.MASTER]
+# list false positives
+disable = [
+    'invalid-name',
+    'too-few-public-methods',
+    'too-many-arguments',
+    'too-many-instance-attributes',
+    'too-many-locals',
+]
+# same lengthas Black
+max-line-length = 120
+# pydantic is not recognized yet
+extension-pkg-whitelist = "pydantic"
+
+# SYSTEMS
+
+[build-system]
+# add pyproject plugins
+requires = ["poetry-core"]
+# build the package with poetry
+build-backend = "poetry.core.masonry.api"
+
+
+[[tool.poetry.source]]
+name = "pypi-server"
+url = "http://localhost:8080/simple/"
