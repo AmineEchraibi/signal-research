@@ -14,6 +14,10 @@ jupyter = "^1.1.1"
 pandas = "^2.2.3"
 trading-middlewares = {version = "^0.1.0", source = "pypi-server"}
 python-dotenv = "^1.0.1"
+pre-commit = "^4.0.1"
+scipy = "^1.14.1"
+numpy = "^2.1.2"
+plotly = "^5.24.1"
 
 
 [tool.poetry.group.checkers.dependencies]
